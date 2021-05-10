@@ -11,14 +11,14 @@ atlasString = os.getenv('atlas_string')
 
 router = APIRouter(prefix='/info')
 
-@router.get('/')
-def result(name:str = Query(None, min_length=3, max_length=20)):
+@router.get(path='')
+def result(anime:str = Query(None, min_length=3, max_length=20)):
     client = MongoClient('mongodb+srv://sunfire:3Y5vr9oexB5MgLCw@cluster0.mi3yf.mongodb.net/animeflv?retryWrites=true&w=majority', ssl_cert_reqs=False)
     db = client.animeflv
     info = db.anime_info
-    name = name.lower()
+    anime = anime.lower()
     data = []
-    result = info.find({'title': {'$regex' : '.*' + f'{name}' + '.*'}})
+    result = info.find({'title': {'$regex' : '.*' + f'{anime}' + '.*'}})
     for e in result:
         payload= {
             'title': e['title'],
