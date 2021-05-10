@@ -23,7 +23,7 @@ def result(anime:str = Query(None, min_length=3, max_length=20)):
         payload= {
             'title': e['title'],
             'synopsis': e['synopsis'],
-            'raint': e['rating'],
+            'rating': e['rating'],
             'anime_id': e['anime_id'],
             'key': e['key'],
             'poster': e['poster'],
