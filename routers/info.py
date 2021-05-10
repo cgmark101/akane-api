@@ -13,7 +13,7 @@ router = APIRouter(prefix='/info')
 
 @router.get(path='')
 def result(anime:str = Query(None, min_length=3, max_length=20)):
-    client = MongoClient('mongodb+srv://sunfire:3Y5vr9oexB5MgLCw@cluster0.mi3yf.mongodb.net/animeflv?retryWrites=true&w=majority', ssl_cert_reqs=False)
+    client = MongoClient(atlasString, ssl_cert_reqs=False)
     db = client.animeflv
     info = db.anime_info
     anime = anime.lower()
